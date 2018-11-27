@@ -1,0 +1,5 @@
+1) mvn clean package
+2) mvn spring-boot:run
+3) http://localhost:8080/v2/api-docs
+4) (se agrega la dependencia de ui en el pom) http://localhost:8080/swagger-ui.html
+5) (se agrega clase custom controller) http://localhost:8080/swagger-ui.html y ahora se ve el cambio al refrezcarexi

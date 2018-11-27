@@ -1,2 +1,0 @@
-Swagger por dzone 
-https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
