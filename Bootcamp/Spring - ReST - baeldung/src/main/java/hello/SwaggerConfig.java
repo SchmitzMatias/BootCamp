@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.Collections;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -50,7 +52,7 @@ public class SwaggerConfig {   /* this was the non restricted documentation
         "API TOS", 
         "Terms of service", 
         new Contact("John Doe", "www.example.com", "myeaddress@company.com"), 
-        "License of API", "API license URL",null); // Collections.emptyList(), agregarlo
+        "License of API", "API license URL",Collections.emptyList());
     }
     
 }
