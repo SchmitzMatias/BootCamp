@@ -3,13 +3,15 @@ package carritoPackage.dto;
 import java.util.HashMap;
 import java.util.Map;
 
-import carritoPackage.models.Producto;
-
 public class CarritoDto{
 
     public Long id;
     public String user;
-    public HashMap<ProductoDto,Integer> productos; //<Producto, unidades>
+    public HashMap<ProductoDto,Integer> productos= new HashMap<>(); //<Producto, unidades>
+
+    public CarritoDto(){
+
+    }
 
     public CarritoDto(Long id,String user,HashMap<ProductoDto,Integer> productos){
         this.id=id;

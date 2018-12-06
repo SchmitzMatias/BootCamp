@@ -7,11 +7,6 @@ import carritoPackage.models.*;
 
 public class Mapper {
 
-	public static CarritoDto convert(Carrito carrito) {
-		return carrito.getProductos()==null ? new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),new HashMap<ProductoDto,Integer>())  
-			: new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),Mapper.convert(carrito.getProductos()));
-	}
-
 	public static HashMap<ProductoDto,Integer> convert(HashMap<Producto,Integer> mapa){
 		HashMap<ProductoDto,Integer> nuevo= new HashMap<>();
 		for(Map.Entry<Producto, Integer> entry: mapa.entrySet()) {
@@ -26,6 +21,11 @@ public class Mapper {
 			nuevo.put(Mapper.convert(entry.getKey()),entry.getValue());
 		}
 		return null;
+	}
+
+	public static CarritoDto convert(Carrito carrito) {
+		return carrito.getProductos()==null ? new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),new HashMap<ProductoDto,Integer>())  
+			: new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),Mapper.convert(carrito.getProductos()));
 	}
 
 	public static Carrito convert(CarritoDto carrito) {

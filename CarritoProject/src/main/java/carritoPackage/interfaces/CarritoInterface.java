@@ -1,7 +1,7 @@
 package carritoPackage.interfaces;
 
 
-import java.util.List;
+import java.util.HashMap;
 
 import carritoPackage.models.*;
 
@@ -13,7 +13,7 @@ public interface CarritoInterface {
 
 	public Carrito getCarrito(long idCarrito);
 
-	public List<Carrito> getCarritos();
+	public HashMap<Long,Carrito> getCarritos();
 
 	public Carrito addProducto(long idCarrito, Producto producto);
 

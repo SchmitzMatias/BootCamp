@@ -1,6 +1,6 @@
 package carritoPackage.models;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 
 public class Producto {
 	private String nombre;

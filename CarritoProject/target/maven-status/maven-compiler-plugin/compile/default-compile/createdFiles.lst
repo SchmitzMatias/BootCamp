@@ -10,4 +10,5 @@ carritoPackage\models\mocks\CarritoMock.class
 carritoPackage\models\Carrito.class
 carritoPackage\dto\Mapper.class
 carritoPackage\services\CarritoServiceInMem.class
+carritoPackage\controllers\ProductoController.class
 carritoPackage\interfaces\CarritoInterface.class

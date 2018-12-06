@@ -1,8 +1,6 @@
 package carritoPackage.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -92,10 +90,10 @@ public class CarritoServiceInMem implements CarritoInterface {
 	}
 
 	@Override
-	public List<Carrito> getCarritos() {
+	public HashMap<Long,Carrito> getCarritos() {
 		lock.readLock().lock();
 		try {
-			return new ArrayList<Carrito>(carritos.values());
+			return (HashMap<Long, Carrito>) carritos;
 		} finally {
 			lock.readLock().unlock();
 		}
