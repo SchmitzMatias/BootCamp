@@ -1,0 +1,13 @@
+carritoPackage\services\ProductoServiceInMem.class
+carritoPackage\interfaces\ProductoInterface.class
+carritoPackage\models\mocks\ProductoMock.class
+carritoPackage\dto\CarritoDto.class
+carritoPackage\controllers\CarritoController.class
+carritoPackage\dto\ProductoDto.class
+carritoPackage\models\Producto.class
+carritoPackage\Application.class
+carritoPackage\models\mocks\CarritoMock.class
+carritoPackage\models\Carrito.class
+carritoPackage\dto\Mapper.class
+carritoPackage\services\CarritoServiceInMem.class
+carritoPackage\interfaces\CarritoInterface.class
