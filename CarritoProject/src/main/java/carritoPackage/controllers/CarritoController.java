@@ -63,17 +63,19 @@ public class CarritoController{
         if (carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Invalid Carrito Id", HttpStatus.BAD_REQUEST);
         Producto producto= productos.get(productoId);
-        Carrito carrito= carritos.addProducto(carritoId, producto);
+        Carrito carrito= carritos.getCarrito(carritoId);
         return new ResponseEntity<>(Mapper.convert(carritos.addProducto(carrito.getIdCarrito(), producto)), HttpStatus.OK);
     }
 
-    @DeleteMapping("removeProducto/{carrito_id}/{producto_id")
+    @DeleteMapping("removeProducto/{carrito_id}/{producto_id}")
     public ResponseEntity<?> removeProducto(@PathVariable(name="carrito_id", required=true)long carritoId, @PathVariable(name="producto_id", required=true) long productoId){
         if (carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Invalid Carrito Id", HttpStatus.BAD_REQUEST);
         if(productos.get(productoId)==null)
             return new ResponseEntity<>("producto not found, Nothing to delete", HttpStatus.ACCEPTED);
-        return new ResponseEntity<>(Mapper.convert(carritos.getCarrito(carritoId)),HttpStatus.OK);
+        Producto producto= productos.get(productoId);
+        carritos.removeProducto(carritoId, producto);
+        return new ResponseEntity<>("Producto succesfully removed",HttpStatus.OK);
     }
 
 }

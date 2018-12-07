@@ -1,22 +1,24 @@
 package carritoPackage.dto;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+
+import carritoPackage.models.Item;
 
 public class CarritoDto{
 
     public Long id;
     public String user;
-    public HashMap<ProductoDto,Integer> productos= new HashMap<>(); //<Producto, unidades>
+    public List<Item> items= new ArrayList<>();
 
     public CarritoDto(){
 
     }
 
-    public CarritoDto(Long id,String user,HashMap<ProductoDto,Integer> productos){
+    public CarritoDto(Long id,String user,List<Item> items){
         this.id=id;
         this.user=user;
-        this.productos=productos;
+        this.items=items;
     }
 
     public void setId(Long id){
@@ -35,24 +37,26 @@ public class CarritoDto{
 		this.user = user;
 	}
 
-    public void setProductos(HashMap<ProductoDto,Integer> productos){
-        this.productos=productos;
+    public void setitems(List<Item> items){
+        this.items=items;
     }
     
-    public HashMap<ProductoDto,Integer> getProductos(){
-        return productos;
+    public List<Item> getItems(){
+        return items;
     }
 
-    public int getUnidadesProducto(ProductoDto Producto){
-        if (productos.get(Producto)!=null)
-            return productos.get(Producto);
+    public int getUnidadesProducto(ProductoDto producto){
+        if (items.contains(producto)){
+            int aux= items.indexOf(producto);
+            return items.get(aux).getUnidades();
+        } 
         return 0;
     }
 
     public Double getTotalAPagar() {
 		Double temporal=0D;
-		for(Map.Entry<ProductoDto, Integer> entry: productos.entrySet()) {
-			temporal+=entry.getKey().getCosto()*entry.getValue();
+		for(Item i:items) {
+			temporal+=i.getProducto().getCosto()*i.getUnidades();
 		}
 		return temporal;
 	}

@@ -1,0 +1,4 @@
+Cambiar nombres de paquete y endpoints
+
+Hacer andar removeProducto/idCarrito/idProducto
+Controlar que al agregar productos repetidos, se incremente la cantidad de unidades

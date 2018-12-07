@@ -1,40 +1,24 @@
 package carritoPackage.dto;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 import carritoPackage.models.*;
 
 public class Mapper {
 
-	public static HashMap<ProductoDto,Integer> convert(HashMap<Producto,Integer> mapa){
-		HashMap<ProductoDto,Integer> nuevo= new HashMap<>();
-		for(Map.Entry<Producto, Integer> entry: mapa.entrySet()) {
-			nuevo.put(Mapper.convert(entry.getKey()),entry.getValue());
-		}
-		return null;
-	}
-
-	public static HashMap<Producto,Integer> convert2(HashMap<ProductoDto,Integer> mapa){
-		HashMap<Producto,Integer> nuevo= new HashMap<>();
-		for(Map.Entry<ProductoDto, Integer> entry: mapa.entrySet()) {
-			nuevo.put(Mapper.convert(entry.getKey()),entry.getValue());
-		}
-		return null;
-	}
-
 	public static CarritoDto convert(Carrito carrito) {
-		return carrito.getProductos()==null ? new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),new HashMap<ProductoDto,Integer>())  
-			: new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),Mapper.convert(carrito.getProductos()));
+		return carrito.getitems()==null ? new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),new ArrayList<Item>())  
+			: new CarritoDto(carrito.getIdCarrito(), carrito.getUser(),carrito.getitems());
 	}
 
 	public static Carrito convert(CarritoDto carrito) {
-		HashMap<Producto,Integer> productos= carrito.getProductos() == null ? new HashMap<>()
-			: Mapper.convert2(carrito.getProductos());
+		List<Item> items= carrito.getItems() == null ? new ArrayList<>()
+			: carrito.getItems();
 		Carrito salida = new Carrito();
 		salida.setIdCarrito(carrito.getId());
 		salida.setUser(carrito.getUser());
-		salida.setProductos(productos);
+		salida.setitems(items);
 		return salida;
 	}
 

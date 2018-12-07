@@ -1,18 +1,19 @@
 package carritoPackage.models;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Carrito {
 	private Long idCarrito;
 	private String user;
-	private HashMap<Producto, Integer> productos; //producto, unidades del mismo
+	private List<Item> items;
 	
 	public Carrito() {
-		productos= new HashMap<>();
+		items= new ArrayList<>(); 
 	}
 
-	public Carrito(HashMap<Producto,Integer> productos){ //TODO usado para el mock ?
-		this.setProductos(productos);
+	public Carrito(List<Item> items){ //TODO usado para el mock? revisar si se usó
+		this.items=items;
 	}
 
 	public Long getIdCarrito() {
@@ -31,33 +32,41 @@ public class Carrito {
 		this.user= user;
 	}
 
-	public HashMap<Producto,Integer> getProductos() {
-		return productos;
+	public List<Item> getitems() {
+		return items;
 	}
 
-	public void setProductos(HashMap<Producto,Integer> productos) {
-		this.productos = productos;
+	public void setitems(List<Item> items) {
+		this.items = items;
 	}
-	
-	public void addProducto(Producto p) {
-		if (productos.containsKey(p))
-			productos.replace(p, productos.get(p)+1); //si el producto ya estaba, la cantidad de unidades del mismo se incrementa en 1
-		else
-			productos.put(p, 1);
+
+	public void addProducto(Producto p) { //si no está, agrega un nuevo item, si está, incrementa en 1 las unidades del mismo
+		if(items==null)
+			items= new ArrayList<Item>();
+		if(!items.contains(p))
+			items.add(new Item(p,1));
+		else{
+			int aux= items.indexOf(p);
+			items.get(aux).setUnidades(items.get(aux).getUnidades()+1);
+		}
 	}
 	
 	public void removeProducto(Producto p) {
-		if (productos.containsKey(p))
-			productos.remove(p);
+		items.remove(p);
+		/*if(items!=null)
+			if (items.contains(p)){
+				int aux= items.indexOf(p);
+				items.remove(aux);
+			}*/
 	}
 	
-	public String listarProductos() {
-		return productos.toString();
+	public String listaritems() {
+		return items.toString();
 	}
 	
 	/*public Double getTotalAPagar() { al ser el que va a la BD, no hace falta que calcule algo que va a ir a la vista, eso lo hace en dto
 		Double temporal=0.0;
-		for(Map.Entry<Producto, Integer> entry: productos.entrySet()) {
+		for(Map.Entry<Producto, Integer> entry: items.entrySet()) {
 			temporal+=entry.getKey().getCosto()*entry.getValue();
 		}
 		return temporal;
