@@ -52,8 +52,14 @@ public class Carrito {
 	}
 	
 	public void removeProducto(Producto p) {
-		items.remove(p);
-		/*if(items!=null)
+		boolean find = false;
+		for(int i =0 ; i< items.size() && !find ;i++){
+			if(items.get(i).getProducto().getId() == p.getId()){
+				items.remove(i);
+				find = true;
+			}
+		}/*
+		if(items!=null)
 			if (items.contains(p)){
 				int aux= items.indexOf(p);
 				items.remove(aux);

@@ -75,6 +75,7 @@ public class CarritoController{
             return new ResponseEntity<>("producto not found, Nothing to delete", HttpStatus.ACCEPTED);
         Producto producto= productos.get(productoId);
         carritos.removeProducto(carritoId, producto);
+        System.out.println("borrado" + carritos.getCarrito(carritoId).toString());
         return new ResponseEntity<>("Producto succesfully removed",HttpStatus.OK);
     }
 

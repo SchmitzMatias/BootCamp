@@ -74,9 +74,6 @@ public class CarritoServiceInMem implements CarritoInterface {
 
 	public Carrito removeProducto(long idCarrito, Producto producto) {
 		Carrito carrito = carritos.get(idCarrito);
-		carrito.removeProducto(producto);
-		return carrito;
-		/*
 		if (carrito == null) {
 			return null;
 		}
@@ -88,7 +85,7 @@ public class CarritoServiceInMem implements CarritoInterface {
             return carrito;
 		} finally {
 			lock.writeLock().unlock();
-		}*/
+		}
 	}
 
 	@Override
