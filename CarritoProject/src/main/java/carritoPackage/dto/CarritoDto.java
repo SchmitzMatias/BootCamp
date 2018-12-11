@@ -46,10 +46,16 @@ public class CarritoDto{
     }
 
     public int getUnidadesProducto(ProductoDto producto){
-        if (items.contains(producto)){
+        /*if (items.contains(producto)){
             int aux= items.indexOf(producto);
             return items.get(aux).getUnidades();
-        } 
+        }*/
+        boolean aux=false;
+        for(int i=0; i<items.size() && aux!=true;i++)
+            if(items.get(i).getProducto().getId()==producto.getId()){
+                aux=true;
+                return items.get(i).getUnidades();
+            }
         return 0;
     }
 
