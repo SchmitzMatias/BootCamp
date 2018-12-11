@@ -43,11 +43,17 @@ public class Carrito {
 	public void addProducto(Producto p) { //si no está, agrega un nuevo item, si está, incrementa en 1 las unidades del mismo
 		if(items==null)
 			items= new ArrayList<Item>();
-		if(!items.contains(p))
-			items.add(new Item(p,1));
+		/*if(!items.contains(p))
+			items.add(new Item(p,1));*/
+		boolean auxContiene=false;
+		int auxPosicion=-1; //disernible
+		for(int i=0; i<items.size() && auxContiene!=true;i++)
+			if(items.get(i).getProducto().getId()==p.getId()){
+				auxContiene=true;
+				auxPosicion= i;
+			}
 		else{
-			int aux= items.indexOf(p);
-			items.get(aux).setUnidades(items.get(aux).getUnidades()+1);
+			items.get(auxPosicion).setUnidades(items.get(auxPosicion).getUnidades()+1);
 		}
 	}
 	
