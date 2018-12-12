@@ -52,6 +52,9 @@ public class Carrito {
 				auxContiene=true;
 				auxPosicion= i;
 			}
+		if(auxContiene==false){
+			items.add(new Item(p,1));
+		}
 		else{
 			items.get(auxPosicion).setUnidades(items.get(auxPosicion).getUnidades()+1);
 		}
