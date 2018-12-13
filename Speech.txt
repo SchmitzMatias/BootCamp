@@ -1,0 +1,35 @@
+¿como te fue en el bootcamp? 
+From the learning point of view, i could say that it was a great experience and that i learnt a lot of new concepts, tools and how things work togheter 
+in order to have a functional Api.
+From the coding perspective i had a rough start because i had never seen most of the concepts that were covered so i learnt everything from scratch, however
+despite being quite behind in schedule i ended up understanding pretty much everything and with working code for the most part.
+I finished the RestApi code on last monday, 3 days after the "good practices" part was released, so instead of adding persistence and testing it, i read what i 
+was expected to do and how to do it, but spent my time deepening on theory. I mean, i started to re-read some of the topics and adding others in order to 
+understand everything that was covered during the bootcamp, and some other things that came up in slack's chat, like go-lang and exeptions handling.
+
+
+¿qué es agile?
+Agile is a set of values and principles. It doesnt make decitions for you, instead it gives you a fundation that teams can use to make decitions that result
+in better software development. According to the Agile manifesto, it focuses more on individuals and interactions than processes and tools, working software 
+over comprehensive documentation, customer collaboration over contracts and lastly, responding to change over following a plan.
+Being agile is making each decition base on the principles and values that the team has agreed to follow. The ultimate goal is to make the software creation 
+process as fluid as possible, and to ensure the customer's satisfaction, by delivering exactly what he wanted, even if he didnt know it at the very beggining.
+Scrum, kanban are examples of agile
+
+¿porqué quiero trabajar en globant?
+for the most part, because is one of the biggest software companies we have in argentina and because its clients demand cutting edge software, i find it super
+challenging and i know for a fact that it would be a great experience to start the path of becoming a software professional with high standards, hopefully.
+Another reason could be that most of my working friends are hired here, and they all say the same thing, is one of the better choices for a first job in tandil
+also they are all working on proyects for international clients and, as i said before, id love to reach a certain quality in my work and i couldnt think of a 
+better place to start the huge learning curve that lays in front of me as an enthusiastic but unexperienced programmer.
+
+¿qué aportaria a globant/ qué gana globant si me contrata?
+mm that is a tough one, i would say that i would be a good addition to the company because im driven by the need of purpose and motivation to become a professional
+on the area, and not only money, because for that matter, my rent is being paid for my parents, thanks to my younger brother, whom i live with. Despite that, id
+love to be able to help at least with the services and covering my own expenses. Another thing i could add to this company is that im curious by nature, so if
+in a near future im asked to work on a technology id never seen before, i would be excited about it, because i know for a fact that if a new technology is introduced
+to the company portfolio, it sure is having a massive market acceptance and i would see it as an oportunity for sure. 
+in the personal matter, i percive myself as an extrovert that likes chatting almost as much as i enjoy learning, so it would please me to be in any team i can pick some
+knowledge from. In terms of teamwork i tend to have a bad time when asking for help, because i tend to feel that im bothering my coworkers, nontheless im glad to help
+whenever im needed because i take it like a challenge, i mean, if i trully understand something, i must be able to explain it in simple terms, if im not able to explain 
+something is because i have more room of growth in that subject and im thankful for the reminder to further my knowledge.
