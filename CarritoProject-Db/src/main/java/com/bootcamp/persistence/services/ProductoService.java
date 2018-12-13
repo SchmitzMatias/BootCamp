@@ -24,10 +24,10 @@ public class ProductoService implements ProductoInterface {
 	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
 	public Producto add(Producto producto) {
-		/*if (producto == null) {
+		if (producto == null) {
 			throw new RuntimeException("product can't be null.");
 		}
-
+		/*
 		if (producto.getId() == null) {
 			producto.setId(sequence.incrementAndGet());
 		}*/

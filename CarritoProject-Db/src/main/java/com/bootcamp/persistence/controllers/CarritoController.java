@@ -25,6 +25,7 @@ public class CarritoController{
 
     @Autowired
     private ProductoInterface productos;
+
     @Autowired
     private CarritoInterface carritos;
 
@@ -50,13 +51,14 @@ public class CarritoController{
         return new ResponseEntity<>("Carrito succesfully removed",HttpStatus.OK);
     }
 
+    /*
     @GetMapping("/getAllCarritos")
     public ResponseEntity<?> getAllCarritos(){
         int aux= carritos.getCarritos().size();
         if(aux==0)
             return new ResponseEntity<>("There are no Carritos to show",HttpStatus.ACCEPTED);
         return new ResponseEntity<>((carritos.getCarritos()), HttpStatus.OK); //TODO mapper para que devuelva dtos?
-    }
+    }*/
 
     @PutMapping("/addProducto/{carrito_id}/{producto_id}")
     public ResponseEntity<?> addProducto(@PathVariable(name="carrito_id", required=true)long carritoId, @PathVariable(name="producto_id", required=true) long productoId){

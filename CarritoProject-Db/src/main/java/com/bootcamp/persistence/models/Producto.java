@@ -10,13 +10,13 @@ import javax.persistence.Table;
 @Table(name = "producto")
 public class Producto {
 
-	@Column(name = "nombre")
-	private String nombre;
-
 	@Id
 	@GeneratedValue
 	@Column(name = "id_producto", unique = true)
 	private Long id;
+
+	@Column(name = "nombre")
+	private String nombre;
 
 	@Column(name = "costo")
 	private Double costo;

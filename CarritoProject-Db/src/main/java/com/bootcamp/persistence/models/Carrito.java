@@ -2,16 +2,29 @@ package com.bootcamp.persistence.models;
 
 import java.util.List;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import java.util.ArrayList;
 
-//@Entity
+@Entity
+@Table(name = "carrito")
 public class Carrito {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "id_carrito", unique = true)
 	private Long idCarrito;
+
+	@Column(name = "usuario")
 	private String user;
+	
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Item> items;
 	
 	public Carrito() {
@@ -22,8 +35,6 @@ public class Carrito {
 		this.items=items;
 	}
 
-	//@Id
-	//@GeneratedValue
 	public Long getIdCarrito() {
 		return idCarrito;
 	}
