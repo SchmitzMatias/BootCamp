@@ -1,13 +1,24 @@
 package com.bootcamp.persistence.models;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-//@Entity
+@Entity
+@Table(name = "producto")
 public class Producto {
+
+	@Column(name = "nombre")
 	private String nombre;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "id_producto", unique = true)
 	private Long id;
+
+	@Column(name = "costo")
 	private Double costo;
 
 	public String getNombre() {
@@ -18,8 +29,6 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-	//@Id
-	//@GeneratedValue
 	public Long getId() {
 		return id;
 	}
