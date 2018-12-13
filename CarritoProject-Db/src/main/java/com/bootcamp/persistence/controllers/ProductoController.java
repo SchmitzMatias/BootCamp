@@ -20,16 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/producto")
 public class ProductoController{
 
-    /*@Autowired
-    private ProductoDao productoDao;
+    @Autowired
+    private ProductoInterface productos;
 
     @PostMapping("/addProducto")
     public ResponseEntity<?> addProducto(@RequestBody(required=true) ProductoDto producto){
         if(producto==null)
             return new ResponseEntity<>("Producto cannot be null", HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(productoDao.saveProducto(Mapper.convert(producto)), HttpStatus.OK);
+        return new ResponseEntity<>(productos.add(Mapper.convert(producto)),HttpStatus.OK);
     }
-
+ /*
     @GetMapping("/getProducto/{producto_id}")
     public ResponseEntity<?> getProducto(@PathVariable(name="producto_id", required=true)long productoId){
         if(productoDao.getProducto(productoId)==null)
@@ -53,16 +53,14 @@ public class ProductoController{
     }*/
 
 
-    @Autowired
-    private ProductoInterface productos;
-
+/* 
     @PostMapping("/addProducto")
     public ResponseEntity<?> addProducto(@RequestBody(required=true) ProductoDto producto){
         if(producto==null)
             return new ResponseEntity<>("Producto cannot be null", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(productos.add(Mapper.convert(producto)), HttpStatus.OK);
-    }
-
+    }*/
+ 
     @GetMapping("/getProducto/{producto_id}")
     public ResponseEntity<?> getProducto(@PathVariable(name="producto_id", required=true)long productoId){
         if(productos.get(productoId)==null)

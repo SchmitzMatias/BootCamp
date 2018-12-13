@@ -11,6 +11,7 @@ import com.bootcamp.persistence.dao.ProductoDao;
 import com.bootcamp.persistence.interfaces.ProductoInterface;
 import com.bootcamp.persistence.models.Producto;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service; 
 
 @Service
@@ -18,6 +19,7 @@ public class ProductoService implements ProductoInterface {
 
 	//private Map<Long, Producto> productos = new HashMap<>(); //<IdProducto, Producto>
 	//private AtomicLong sequence = new AtomicLong(0L);
+	@Autowired
 	private ProductoDao productos;
 	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
@@ -32,7 +34,7 @@ public class ProductoService implements ProductoInterface {
 
 		lock.writeLock().lock();
 		try {
-			productos.saveProducto(producto);
+			productos.save(producto);
 			return producto;
 		} finally {
 			lock.writeLock().unlock();
@@ -42,7 +44,7 @@ public class ProductoService implements ProductoInterface {
 	public void remove(long id) { //TODO hacer el check de qué pasa si no pudo eliminarlo
 		lock.writeLock().lock();
 		try {
-			productos.removeProducto(id);
+			productos.deleteById(id);
 		} finally {
 			lock.writeLock().unlock();
 		}
@@ -51,7 +53,7 @@ public class ProductoService implements ProductoInterface {
 	public Producto get(long id) {
 		lock.readLock().lock();
 		try {
-			return productos.getProducto(id); //TODO hacer el check de qué pasa si no lo encontró
+			return productos.getOne(id); //TODO hacer el check de qué pasa si no lo encontró
 		} finally {
 			lock.readLock().unlock();
 		}
