@@ -1,5 +1,10 @@
 package com.bootcamp.persistence.models;
 
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+
+//@Entity
 public class Producto {
 	private String nombre;
 	private Long id;
@@ -13,6 +18,8 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
+	//@Id
+	//@GeneratedValue
 	public Long getId() {
 		return id;
 	}

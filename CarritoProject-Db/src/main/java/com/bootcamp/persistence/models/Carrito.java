@@ -1,8 +1,14 @@
 package com.bootcamp.persistence.models;
 
 import java.util.List;
+
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+
 import java.util.ArrayList;
 
+//@Entity
 public class Carrito {
 	private Long idCarrito;
 	private String user;
@@ -16,6 +22,8 @@ public class Carrito {
 		this.items=items;
 	}
 
+	//@Id
+	//@GeneratedValue
 	public Long getIdCarrito() {
 		return idCarrito;
 	}
