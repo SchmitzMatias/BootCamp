@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class Carrito {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_carrito", unique = true)
 	private Long idCarrito;
 
@@ -60,19 +61,24 @@ public class Carrito {
 	}
 
 	public void addProducto(Producto p) { //si no está, agrega un nuevo item, si está, incrementa en 1 las unidades del mismo
-		if(items==null)
+		/*if(items==null)
 			items= new ArrayList<Item>();
 		/*if(!items.contains(p))
 			items.add(new Item(p,1));*/
+		System.out.println( "\n" + "\n" + "entró al for models.Carrito, linea 68" + "\n" + "\n");
 		boolean auxContiene=false;
 		int auxPosicion=-1; //disernible
-		for(int i=0; i<items.size() && auxContiene!=true;i++)
+		for(int i=0; i<items.size() && auxContiene!=true;i++){
 			if(items.get(i).getProducto().getId()==p.getId()){
 				auxContiene=true;
 				auxPosicion= i;
 			}
+		}
+		System.out.println( "\n" + "\n" + "salio del for" + "\n" + "\n");
 		if(auxContiene==false){
+			System.out.println( "\n" + "\n" + "entró al if auxContiene==false" + "\n" + "\n");
 			items.add(new Item(p,1));
+			System.out.println( "\n" + "\n" + "agregó el item" + items.size() + "\n" + "\n");
 		}
 		else{
 			items.get(auxPosicion).setUnidades(items.get(auxPosicion).getUnidades()+1);
