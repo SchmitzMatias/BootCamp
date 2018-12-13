@@ -76,9 +76,9 @@ public class Carrito {
 		}
 		System.out.println( "\n" + "\n" + "salio del for" + "\n" + "\n");
 		if(auxContiene==false){
-			System.out.println( "\n" + "\n" + "entró al if auxContiene==false" + "\n" + "\n");
+			System.out.println( "\n" + "\n" + "entró al if auxContiene==false" + "\n" + "items size: " + items.size() + "\n");
 			items.add(new Item(p,1));
-			System.out.println( "\n" + "\n" + "agregó el item" + items.size() + "\n" + "\n");
+			System.out.println( "\n" + "\n" + "agregó el item" + items.get(0).getProducto().getNombre() + "\n" + "items size: " + items.size() + "\n" + "\n");
 		}
 		else{
 			items.get(auxPosicion).setUnidades(items.get(auxPosicion).getUnidades()+1);

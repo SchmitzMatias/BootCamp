@@ -60,19 +60,24 @@ public class CarritoService implements CarritoInterface {
 	}
 
 	public Carrito addProducto(long idCarrito, Producto producto) {
+		System.out.println("entró a addProducto de CarritoService" + "\n" + "\n");
 		if (producto == null) {
 			throw new RuntimeException("invalid product. PRODUCT=" + producto);
 		}
-
 		lock.writeLock().lock();
 		try {
+			System.out.println("entró a bloque try" + "\n" + "\n");
 			Carrito carrito = carritos.getOne(idCarrito);
+			System.out.println("recuperó el carrito en cual agregar" + "\n" + "\n");
 			if (carrito == null) {
 				throw new RuntimeException("cart does not exists. CART_ID=" + idCarrito);
 			}
+			System.out.println("entra a linea 76" + "\n" + "\n");
 			carrito.addProducto(producto);
+			System.out.println("sale de linea 76" + "\n" + "\n");
 			return carrito;
 		} finally {
+			System.out.println("Carrito + item: " + carritos.findAll().get(0).getitems().get(0).getProducto().getNombre() );
 			lock.writeLock().unlock();
 		}
 	}
