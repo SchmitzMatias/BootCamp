@@ -76,7 +76,8 @@ public class CarritoService implements CarritoInterface {
 		lock.writeLock().lock();
 		try {
             if(carrito.getitems()!= null){
-                carrito.removeProducto(producto);
+				carrito.removeProducto(producto);
+				carritos.save(carrito);
             }
             return carrito;
 		} finally {

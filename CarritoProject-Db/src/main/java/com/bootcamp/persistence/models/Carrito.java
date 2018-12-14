@@ -81,7 +81,10 @@ public class Carrito {
 		boolean find = false;
 		for(int i =0 ; i< items.size() && !find ;i++){
 			if(items.get(i).getProducto().getId() == p.getId()){
-				items.remove(i);
+				if(items.get(i).getUnidades()>1)
+					items.get(i).setUnidades(items.get(i).getUnidades()-1);
+				if(items.get(i).getUnidades()==1)
+					items.remove(i);
 				find = true;
 			}
 		}
