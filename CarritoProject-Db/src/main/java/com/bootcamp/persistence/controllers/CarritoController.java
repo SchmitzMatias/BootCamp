@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/carrito")
+@RequestMapping("/api/v1")
 public class CarritoController{
 
     @Autowired
@@ -30,13 +30,13 @@ public class CarritoController{
     @Autowired
     private CarritoInterface carritos;
 
-    /*@PostMapping("/addCarrito") TODO preguntar si este formato o el de abajo
+    /*@PostMapping("/carritos") TODO preguntar si este formato o el de abajo
     public ResponseEntity<?> addCarrito(@RequestBody(required=true) CarritoDto carrito){
         if(carrito==null)
             return new ResponseEntity<>("Carrito cannot be null ", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(carritos.addCarrito(Mapper.convert(carrito)), HttpStatus.OK);
     } */
-    @PostMapping("/addCarrito")
+    @PostMapping("/carritos")
     public ResponseEntity<?> addCarrito(@RequestParam(required=true) String user){
         //if(user==null)
         //    return new ResponseEntity<>("Carrito cannot be null ", HttpStatus.BAD_REQUEST);
@@ -45,14 +45,14 @@ public class CarritoController{
         return new ResponseEntity<>(carritos.addCarrito(Mapper.convert(temporal)), HttpStatus.OK);
     }
 
-    @GetMapping("/getCarrito/{carrito_id}")
+    @GetMapping("/carritos/{carrito_id}")
     public ResponseEntity<?> getCarrito(@PathVariable(name="carrito_id", required=true)long carritoId){
         if(carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Invalid Id", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(Mapper.convert(carritos.getCarrito(carritoId)), HttpStatus.OK);
     } 
 
-    @DeleteMapping("/removeCarrito/{carrito_id}")
+    @DeleteMapping("/carritos/{carrito_id}")
     public ResponseEntity<?> removeCarrito(@PathVariable(name="carrito_id", required=true)long carritoId){
         if(carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Carrito not found, Nothing to delete", HttpStatus.ACCEPTED);
@@ -61,7 +61,7 @@ public class CarritoController{
     }
 
     
-    @GetMapping("/getAllCarritos")
+    @GetMapping("/carritos")
     public ResponseEntity<?> getAllCarritos(){
         int aux= carritos.getCarritos().size();
         if(aux==0)
@@ -69,7 +69,7 @@ public class CarritoController{
         return new ResponseEntity<>((carritos.getCarritos()), HttpStatus.OK); //TODO mapper para que devuelva dtos?
     }
 
-    @PutMapping("/addProducto/{carrito_id}/{producto_id}")
+    @PutMapping("/carritos/{carrito_id}/productos/{producto_id}")
     public ResponseEntity<?> addProducto(@PathVariable(name="carrito_id", required=true)long carritoId, @PathVariable(name="producto_id", required=true) long productoId){
         if (carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Invalid Carrito Id", HttpStatus.BAD_REQUEST);
@@ -79,7 +79,7 @@ public class CarritoController{
         return new ResponseEntity<>("agregado con exito", HttpStatus.OK);
     }
 
-    @DeleteMapping("removeProducto/{carrito_id}/{producto_id}")
+    @DeleteMapping("/carritos/{carrito_id}/productos/{producto_id}")
     public ResponseEntity<?> removeProducto(@PathVariable(name="carrito_id", required=true)long carritoId, @PathVariable(name="producto_id", required=true) long productoId){
         if (carritos.getCarrito(carritoId)==null)
             return new ResponseEntity<>("Invalid Carrito Id", HttpStatus.BAD_REQUEST);

@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/producto")
+@RequestMapping("/api/v1")
 public class ProductoController{
 
     @Autowired
     private ProductoInterface productos;
 
-    /*@PostMapping("/addProducto") TODO preguntar si este formato o el de abajo
+    /*@PostMapping("/productos") TODO preguntar si este formato o el de abajo
     public ResponseEntity<?> addProducto(@RequestBody(required=true) ProductoDto producto){
         if(producto==null)
             return new ResponseEntity<>("Producto cannot be null", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(productos.add(Mapper.convert(producto)),HttpStatus.OK);
     }*/
  
-    @PostMapping("/addProducto")
+    @PostMapping("/productos")
     public ResponseEntity<?> addProducto(@RequestParam(required=true) String nombre, @RequestParam(required=true) Double costo){
         //if(nombre==null)
         //    return new ResponseEntity<>("Producto's name cannot be null", HttpStatus.BAD_REQUEST);
@@ -42,14 +42,14 @@ public class ProductoController{
         return new ResponseEntity<>(productos.add(Mapper.convert(temporal)),HttpStatus.OK);
     }
 
-    @GetMapping("/getProducto/{producto_id}")
+    @GetMapping("/productos/{producto_id}")
     public ResponseEntity<?> getProducto(@PathVariable(name="producto_id", required=true)long productoId){
         if(productos.get(productoId)==null)
             return new ResponseEntity<>("Invalid Id",HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(Mapper.convert(productos.get(productoId)),HttpStatus.OK);
     }
 
-    @DeleteMapping("/removeProducto/{producto_id}")
+    @DeleteMapping("/productos/{producto_id}")
     public ResponseEntity<?> removeProducto(@PathVariable(name="producto_id", required=true) long productoId){
         if(productos.get(productoId)==null)
             return new ResponseEntity<>("Producto not found, Nothing to delete", HttpStatus.ACCEPTED);
@@ -57,7 +57,7 @@ public class ProductoController{
         return new ResponseEntity<>("Producto succesfully removed",HttpStatus.OK);
     }
 
-    @GetMapping("/getAllProductos")
+    @GetMapping("/productos")
     public ResponseEntity<?> getAllProductos(){
         if(productos.getAll().size()==0 || productos.getAll()==null)
             return new ResponseEntity<>("There are no Productos to show",HttpStatus.ACCEPTED);
