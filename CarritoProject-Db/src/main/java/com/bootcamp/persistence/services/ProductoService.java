@@ -58,5 +58,4 @@ public class ProductoService implements ProductoInterface {
 			lock.readLock().unlock();
 		}
 	}
-//TODO hacer checks de parametros
 }

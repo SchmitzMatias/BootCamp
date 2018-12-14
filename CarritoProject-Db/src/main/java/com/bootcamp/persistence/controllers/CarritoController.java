@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,12 +30,20 @@ public class CarritoController{
     @Autowired
     private CarritoInterface carritos;
 
-    @PostMapping("/addCarrito")
+    /*@PostMapping("/addCarrito") TODO preguntar si este formato o el de abajo
     public ResponseEntity<?> addCarrito(@RequestBody(required=true) CarritoDto carrito){
         if(carrito==null)
             return new ResponseEntity<>("Carrito cannot be null ", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(carritos.addCarrito(Mapper.convert(carrito)), HttpStatus.OK);
-    } 
+    } */
+    @PostMapping("/addCarrito")
+    public ResponseEntity<?> addCarrito(@RequestParam(required=true) String user){
+        //if(user==null)
+        //    return new ResponseEntity<>("Carrito cannot be null ", HttpStatus.BAD_REQUEST);
+        CarritoDto temporal= new CarritoDto();
+        temporal.setUser(user);
+        return new ResponseEntity<>(carritos.addCarrito(Mapper.convert(temporal)), HttpStatus.OK);
+    }
 
     @GetMapping("/getCarrito/{carrito_id}")
     public ResponseEntity<?> getCarrito(@PathVariable(name="carrito_id", required=true)long carritoId){
@@ -68,7 +77,6 @@ public class CarritoController{
         Carrito carrito= carritos.getCarrito(carritoId);
         carritos.addProducto(carrito.getIdCarrito(), producto);
         return new ResponseEntity<>("agregado con exito", HttpStatus.OK);
-        //return new ResponseEntity<>(Mapper.convert(carrito), HttpStatus.OK); TODO mapper no funciona, preguntar porqué
     }
 
     @DeleteMapping("removeProducto/{carrito_id}/{producto_id}")

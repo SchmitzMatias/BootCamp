@@ -95,5 +95,4 @@ public class CarritoService implements CarritoInterface {
 			lock.readLock().unlock();
 		}
 	}
-//TODO hacer checks de parametros
 }
