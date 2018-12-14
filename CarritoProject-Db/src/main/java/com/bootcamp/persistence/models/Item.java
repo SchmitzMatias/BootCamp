@@ -25,6 +25,10 @@ public class Item{
     @Column(name= "unidades")
     private int unidades;
 
+    public Item(){
+        
+    }
+
     public Item(Producto producto, int unidades){
         this.producto= producto;
         this.unidades= unidades;

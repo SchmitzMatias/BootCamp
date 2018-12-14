@@ -2,6 +2,7 @@ package com.bootcamp.persistence.interfaces;
 
 
 //import java.util.HashMap;
+import java.util.List;
 
 import com.bootcamp.persistence.models.Carrito;
 import com.bootcamp.persistence.models.Producto;
@@ -16,6 +17,7 @@ public interface CarritoInterface {
 	public Carrito getCarrito(long idCarrito);
 
 	//public HashMap<Long,Carrito> getCarritos();
+	public List<Carrito> getCarritos();
 
 	public Carrito addProducto(long idCarrito, Producto producto);
 

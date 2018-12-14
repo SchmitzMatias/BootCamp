@@ -3,6 +3,7 @@ package com.bootcamp.persistence.services;
 //import java.util.HashMap;
 //import java.util.Map;
 //import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import com.bootcamp.persistence.dao.CarritoDao;
@@ -60,24 +61,20 @@ public class CarritoService implements CarritoInterface {
 	}
 
 	public Carrito addProducto(long idCarrito, Producto producto) {
-		System.out.println("entró a addProducto de CarritoService" + "\n" + "\n");
 		if (producto == null) {
 			throw new RuntimeException("invalid product. PRODUCT=" + producto);
 		}
 		lock.writeLock().lock();
 		try {
-			System.out.println("entró a bloque try" + "\n" + "\n");
 			Carrito carrito = carritos.getOne(idCarrito);
-			System.out.println("recuperó el carrito en cual agregar" + "\n" + "\n");
 			if (carrito == null) {
 				throw new RuntimeException("cart does not exists. CART_ID=" + idCarrito);
 			}
-			System.out.println("entra a linea 76" + "\n" + "\n");
 			carrito.addProducto(producto);
-			System.out.println("sale de linea 76" + "\n" + "\n");
+			carritos.save(carrito);
+			//carritos.getOne(idCarrito).addProducto(producto);
 			return carrito;
 		} finally {
-			System.out.println("Carrito + item: " + carritos.findAll().get(0).getitems().get(0).getProducto().getNombre() );
 			lock.writeLock().unlock();
 		}
 	}
@@ -98,15 +95,15 @@ public class CarritoService implements CarritoInterface {
 		}
 	}
 
-	/*
+	
 	@Override
-	public HashMap<Long,Carrito> getCarritos() {
+	public List<Carrito> getCarritos() {
 		lock.readLock().lock();
 		try {
-			return (HashMap<Long, Carrito>) carritos;
+			return carritos.findAll();
 		} finally {
 			lock.readLock().unlock();
 		}
-	}*/
+	}
 
 }
