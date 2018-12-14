@@ -32,7 +32,7 @@ public class Carrito {
 		items= new ArrayList<>(); 
 	}
 
-	public Carrito(List<Item> items){ //TODO usado para el mock? revisar si se usó
+	public Carrito(List<Item> items){
 		this.items=items;
 	}
 
@@ -61,10 +61,6 @@ public class Carrito {
 	}
 
 	public void addProducto(Producto p) { //si no está, agrega un nuevo item, si está, incrementa en 1 las unidades del mismo
-		/*if(items==null)
-			items= new ArrayList<Item>();
-		/*if(!items.contains(p))
-			items.add(new Item(p,1));*/
 		boolean auxContiene=false;
 		int auxPosicion=-1; //disernible
 		for(int i=0; i<items.size() && auxContiene!=true;i++){
@@ -88,12 +84,7 @@ public class Carrito {
 				items.remove(i);
 				find = true;
 			}
-		}/*
-		if(items!=null)
-			if (items.contains(p)){
-				int aux= items.indexOf(p);
-				items.remove(aux);
-			}*/
+		}
 	}
 	
 	public String listaritems() {

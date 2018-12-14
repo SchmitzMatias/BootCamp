@@ -1,8 +1,5 @@
 package com.bootcamp.persistence.services;
 
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.concurrent.atomic.AtomicLong;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -12,26 +9,19 @@ import com.bootcamp.persistence.models.Carrito;
 import com.bootcamp.persistence.models.Producto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service; //¿que hace?
+import org.springframework.stereotype.Service;
 
 @Service
 public class CarritoService implements CarritoInterface {
 
-	//private Map<Long, Carrito> carritos = new HashMap<>();
-	//private AtomicLong sequence = new AtomicLong(0L);
 	@Autowired
 	private CarritoDao carritos;
 	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
 	public Carrito addCarrito(Carrito carrito) {
 		if (carrito == null) {
-			//throw new RuntimeException("invalid cart: null");
 			throw new RuntimeException("Carrito can't be null.");
 		}
-		/*
-		if (carrito.getIdCarrito() == null) {
-			carrito.setIdCarrito(sequence.addAndGet(1));
-		}*/
 
 		lock.writeLock().lock();
 		try {
@@ -72,7 +62,6 @@ public class CarritoService implements CarritoInterface {
 			}
 			carrito.addProducto(producto);
 			carritos.save(carrito);
-			//carritos.getOne(idCarrito).addProducto(producto);
 			return carrito;
 		} finally {
 			lock.writeLock().unlock();
@@ -105,5 +94,5 @@ public class CarritoService implements CarritoInterface {
 			lock.readLock().unlock();
 		}
 	}
-
+//TODO hacer checks de parametros
 }

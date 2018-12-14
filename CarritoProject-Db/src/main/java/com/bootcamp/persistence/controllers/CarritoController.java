@@ -68,7 +68,7 @@ public class CarritoController{
         Carrito carrito= carritos.getCarrito(carritoId);
         carritos.addProducto(carrito.getIdCarrito(), producto);
         return new ResponseEntity<>("agregado con exito", HttpStatus.OK);
-        //return new ResponseEntity<>(Mapper.convert(carritos.addProducto(carrito.getIdCarrito(), producto)), HttpStatus.OK);
+        //return new ResponseEntity<>(Mapper.convert(carrito), HttpStatus.OK); TODO mapper no funciona, preguntar porqué
     }
 
     @DeleteMapping("removeProducto/{carrito_id}/{producto_id}")
